@@ -5,13 +5,14 @@ const searchBttn = document.querySelector('#search-button')
 const geoLocation = document.querySelector('#geolocation')
 const displayCity = document.querySelector('#display-city')
 // create let
-let weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=` + lat + `&lon=` + lon + `&appid=e0d0342711380951f5bd4469a6759963`
-let geographicLoc = `http://api.openweathermap.org/geo/1.0/direct?q=`+ cityEl + `&limit=1&appid=b6b2126e212f7ac9ffeaf9811e11740e`
-let currentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=`+ lat + `&lon=`+ lon + `&appid=e0d0342711380951f5bd4469a6759963`
 
 var lat;
 var lon;
-var cityEl;
+const cityEl = document.getElementById("city-typed").value;
+
+let geographicLoc = `http://api.openweathermap.org/geo/1.0/direct?q=`+ cityEl + `&limit=1&appid=b6b2126e212f7ac9ffeaf9811e11740e`
+let weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=` + lat + `&lon=` + lon + `&appid=e0d0342711380951f5bd4469a6759963`
+let currentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=`+ lat + `&lon=`+ lon + `&appid=e0d0342711380951f5bd4469a6759963`
 
 //req url geo api
 
@@ -23,12 +24,12 @@ citySearch.addEventListener('submit', function(event){
     // localStorage.setItem("lan", lan);
     // localStorage.setItem("lon", lon);
     // localStorage.setItem("citySelect", citySelect);
-    cityEl = document.getElementById("city-typed").value;
     document.getElementById("geoLocation").innerHTML = cityEl;
     console.log(cityEl)
-    callWeather(weatherUrl)
-    async function callWeather(weatherUrl){
-        const response = await fetch(weatherUrl);
+    console.log(weatherUrl)
+    
+    async function callLocation(geographicLoc){
+        const response = await fetch(geographicLoc);
         var data = await response.json();
         console.log(data);
         if (response.ok) {
@@ -36,6 +37,7 @@ citySearch.addEventListener('submit', function(event){
         } else {
             alert('Error: ' + response.statusText);
         }} 
+    callLocation();
 });  
 
 var getGeoLoc = function(cityEl){
