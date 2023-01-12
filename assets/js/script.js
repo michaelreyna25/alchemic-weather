@@ -4,6 +4,7 @@ const citySelect = document.querySelector('#city-typed')
 const searchBttn = document.querySelector('#search-button')
 const geoLocation = document.querySelector('#geolocation')
 const displayCity = document.querySelector('#display-city')
+const day5 = document.querySelector('#5-day')
 // create let
 
 var lat;
@@ -13,6 +14,20 @@ const cityEl = document.getElementById("city-typed").value;
 let geographicLoc = `http://api.openweathermap.org/geo/1.0/direct?q=`+ cityEl + `&limit=1&appid=b6b2126e212f7ac9ffeaf9811e11740e`
 let weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=` + lat + `&lon=` + lon + `&appid=e0d0342711380951f5bd4469a6759963`
 let currentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=`+ lat + `&lon=`+ lon + `&appid=e0d0342711380951f5bd4469a6759963`
+
+var card1 = document.createElement("<a>")
+var card2 = document.createElement("<a>")
+var card3 = document.createElement("<a>")
+var card4 = document.createElement("<a>")
+var card5 = document.createElement("<a>")
+
+card1.setAttribute("col-1 p-5 m-3 card")
+card2.setAttribute("col-1 p-5 m-3 card")
+card3.setAttribute("col-1 p-5 m-3 card")
+card4.setAttribute("col-1 p-5 m-3 card")
+card5.setAttribute("col-1 p-5 m-3 card")
+
+day5.appendChild(card1,card2, card3, card4, card5)
 
 //req url geo api
 
